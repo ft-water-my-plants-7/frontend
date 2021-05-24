@@ -1,109 +1,57 @@
 import React, { useState, useEffect } from "react";
-import Form from "./add-plant-form";
 import axios from "axios";
 
-const quotesURL = "http://localhost:3333/api/quotes";
-
-const initialFormState = {
-  id: "",
-  text: "",
-  author: "",
-};
-
-
 const AddPlant = () => {
-  const [quotes, setQuotes] = useState([]);
-  const [formValues, setFormValues] = useState(initialFormState);
+  const [form, setForm] = useState({
+    nickname: "",
+    startWatering: "",
+    notes: "",
+  });
 
-  ////////////// NETWORK HELPERS //////////////
-  ////////////// NETWORK HELPERS //////////////
-  ////////////// NETWORK HELPERS //////////////
-  const getQuotes = () => {
+  const submit = (event) => {
+    event.preventDefault();
+    const newPlant = {
+      nickname: form.nickname,
+      startWatering: form.startWatering,
+      notes: form.notes,
+    };
     axios
-      .get(quotesURL)
-      .then((response) => {
-        setQuotes(response.data);
-      })
-      .catch(handleError);
-  };
-
-  const postQuote = ({ text, author }) => {
-    axios
-      .post(quotesURL, { text, author })
-      .then((res) => setQuotes(quotes.concat(res.data)))
-      .catch(handleError)
-      .finally(resetForm);
-  };
-
-  const putQuote = ({ id, text, author }) => {
-    axios
-      .put(`${quotesURL}/${id}`, { text, author })
+      .post("https://reqres.in/api/users", newPlant)
       .then((res) => {
-        setQuotes(
-          quotes.map((quote) => {
-            return quote.id === id ? res.data : quote;
-          })
-        );
+        debugger;
       })
-      .catch(handleError)
-      .finally(resetForm);
+      .catch((res) => {});
   };
 
-  const deleteQuote = (id) => {
-    axios
-      .delete(`${quotesURL}/${id}`)
-      .then((res) => {
-        // eslint-disable-line
-        setQuotes(quotes.filter((quote) => quote.id !== id));
-      })
-      .catch(handleError)
-      .finally(resetForm);
+   const change = (event) => {
+     const { value, name, type, checked } = event.target;
+     const valueToUse = type === "checkbox" ? checked : value;
+     setForm(name, valueToUse);
+     setForm({ ...form, [name]: valueToUse });
+   };
+
+    return (
+      <div>
+        <form onSubmit={submit}>
+          Nickname
+          <input type="text" name="nickname" onChange={change} />
+          Start watering
+          <select type="text" value={form.startDate} name="startWatering" onChange={change}>
+              {/* Stretch to make the days start with todays day */}
+            <option value="1">Monday</option>
+            <option value="2">Tuesday</option>
+            <option value="3">Wednesday</option>
+            <option value="4">Thursday</option>
+            <option value="5">Friday</option>
+            <option value="6">Saturday</option>
+            <option value="7">Sunday</option>
+
+          </select>
+          Notes <input type="textarea" name="notes" onChange={change} />
+          <button>ADD PLANT</button>
+        </form>
+      </div>
+    );
   };
 
-  ////////////// OTHER HELPERS //////////////
-  ////////////// OTHER HELPERS //////////////
-  ////////////// OTHER HELPERS //////////////
-  const editQuote = (id) => {
-    const quote = quotes.find((q) => q.id === id);
-    setFormValues({ ...quote });
-  };
-
-  const handleError = (err) => {
-    debugger;
-  }; // eslint-disable-line
-
-  const resetForm = () => setFormValues(initialFormState);
-
-  ////////////// SIDE EFFECTS //////////////
-  ////////////// SIDE EFFECTS //////////////
-  ////////////// SIDE EFFECTS //////////////
-  useEffect(() => getQuotes(), []);
-
-  return (
-    <div className="container">
-      <h3>Quotes</h3>
-      <ul>
-        {quotes.map((q, i) => (
-          <li key={q.id}>
-            <div>
-              {q.text} ({q.author})
-            </div>
-            <button data-cy={`editBtn${i}`} onClick={() => editQuote(q.id)}>
-              Edit
-            </button>
-            <button data-cy={`deleteBtn${i}`} onClick={() => deleteQuote(q.id)}>
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
-      <Form
-        values={formValues}
-        setValues={setFormValues}
-        submitHandlers={{ postQuote, putQuote }}
-        reset={resetForm}
-      />
-    </div>
-  );
-};
 export default AddPlant
