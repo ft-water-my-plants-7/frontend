@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const AddPlant = () => {
+
   const [form, setForm] = useState({
     nickname: "",
     startWatering: "",
@@ -59,4 +60,5 @@ const AddPlant = () => {
     );
   };
 
+  
 export default AddPlant
