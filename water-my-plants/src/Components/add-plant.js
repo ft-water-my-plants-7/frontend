@@ -36,16 +36,21 @@ const AddPlant = () => {
           Nickname
           <input type="text" name="nickname" onChange={change} />
           Start watering
-          <select type="text" value={form.startDate} name="startWatering" onChange={change}>
-              {/* Stretch to make the days start with todays day */}
-            <option value="1">Monday</option>
-            <option value="2">Tuesday</option>
-            <option value="3">Wednesday</option>
-            <option value="4">Thursday</option>
-            <option value="5">Friday</option>
-            <option value="6">Saturday</option>
-            <option value="7">Sunday</option>
-
+          <select
+            type="text"
+            value={form.startDate}
+            name="startWatering"
+            onChange={change}
+          >
+            {/* Stretch to make the days start with todays day */}
+            <option> Select day </option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
           </select>
           Notes <input type="textarea" name="notes" onChange={change} />
           <button>ADD PLANT</button>
