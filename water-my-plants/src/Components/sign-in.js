@@ -1,9 +1,11 @@
-import React, { useState, useHistory, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import {useHistory} from 'react-router-dom'
 
 
 function SignInForm () {
+    const history = useHistory()
 
     // STATES
     const initialFormValue = {
@@ -32,7 +34,7 @@ function SignInForm () {
                <input type="password" name="password" id="password" onChange={changeHandler}/> Password
                <button>Log in</button>
             </form>
-            <p>Already have an account? <span>Sign in</span></p>
+            <p>Already have an account? <span onClick={() => history.push('/Signup')}>Sign in</span></p>
         </div>
     )
 }

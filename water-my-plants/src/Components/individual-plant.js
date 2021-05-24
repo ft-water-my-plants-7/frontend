@@ -1,7 +1,10 @@
 
-const IndividualPlant = () => {
+const IndividualPlant = (props) => {
+    const {plant} = props
     return(
-        <h1>SIGN UP</h1>
+        <div>
+            {plant.name}
+        </div>
     )
 }
 export default IndividualPlant
