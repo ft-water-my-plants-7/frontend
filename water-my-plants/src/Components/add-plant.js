@@ -1,7 +1,9 @@
 
 const AddPlant = () => {
     return(
-        <h1>SIGN UP</h1>
+        <div>
+            <h1>ADD A PLANT</h1>
+        </div>
     )
 }
 export default AddPlant
