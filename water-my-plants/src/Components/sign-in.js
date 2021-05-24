@@ -5,20 +5,29 @@ import axios from "axios";
 
 function SignInForm () {
 
+    // STATES
     const initialFormValue = {
         email: "",
-        password: "",
+        password: ""
     }
+
     const [formValue, setFormValue] =useState(initialFormValue)
 
+    //EVENT HANDLERS
     const changeHandler = event => {
-        setFormValue(event.target.value)
+        setFormValue({...formValue,[event.target.name]: event.target.value})
     }
 
+    const onSubmit = event => {
+        event.preventDefault()
+        console.log(formValue)
+    }
+
+    // RETURN STATEMENT
     return (
         <div>
             <h2>Login</h2>
-            <form>
+            <form onSubmit={onSubmit}>
                <input type="email" name="email" id="email" onChange={changeHandler}/> Email
                <input type="password" name="password" id="password" onChange={changeHandler}/> Password
                <button>Log in</button>
