@@ -1,28 +1,18 @@
 
-import React, {useState} from 'react'
+import axios from 'axios'
+import React, {useState, useEffect} from 'react'
 
-
-const initialFormValues = {
-    name:'',
-    notes:'',
-    schedule:'',
-}
 
 const EditPlant = () => {
 
     //States
-    const [formValues, setFormValues] = useState(initialFormValues)
+    const [plant, setPlant] = useState({})
 
-    //Event handlers
-    const onChange = evt => {
-        const {name,value} = evt.target
-        setFormValues({...formValues, [name]:value})
-    }
-
-    const onSubmit = evt => {
-        evt.preventDefault()
-        console.log(formValues)
-    }
+    // useEffect(() => {
+    //   axios.get(`/api/plants/${plant_id}`)
+    //   setPlant(res.data)
+    // },[])
+    
 
     return(
         <div>
@@ -30,23 +20,10 @@ const EditPlant = () => {
             <h4>latin name</h4>
             <p>Watering Schedule</p>
             <form>
-                <label>Nickname
-                <input type='text' name='name' onChange={onChange}/>
-                </label>
-                <label>Start Watering
-                <select type='select' name='schedule' onChange={onChange}>
-                    <option>Sunday</option>
-                    <option>Monday</option>
-                    <option>Tuesday</option>
-                    <option>Wednsday</option>
-                    <option>Thursday</option>
-                    <option>Friday</option>
-                    <option>Saturday</option>
-                </select>
-                </label>
-                <label>Notes
-                <input type='text' name='notes' onChange={onChange}/>
-                </label>
+              Nickname<input name='' id= '' value=''/>
+              Species<input name='' id= '' value=''/>
+              How often do you water it?<input name='' id= '' value='' type='number'/>
+              Add an Image<input name='' id= '' value=''/>
             </form>
             <button>Save Changes</button>
             <h4><span>Delete From Collection</span></h4>
