@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import axios from "axios"
+import {axiosWithAuth} from "../../utils/axiosWithAuth"
 
 const AddPlantForm1 = () => {
   const [form, setForm] = useState({
@@ -22,10 +22,10 @@ const AddPlantForm1 = () => {
       startWatering: form.startWatering,
       notes: form.notes,
     };
-    axios
-      .post("https://reqres.in/api/users", newPlant)
+    axiosWithAuth()
+      .post(`/api/plants/user/:user_id`, newPlant)
       .then((res) => {
-        debugger;
+        console.log(res);
       })
       .catch((res) => {});
   };
