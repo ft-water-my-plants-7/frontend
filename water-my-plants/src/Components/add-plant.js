@@ -1,32 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import AddPlantForm from "./add-plant-form"
-
-    // const formValues = {
-    //   name: "",
-    //   latinName: "",
-    //   nickname: "",
-    //   waterFrequency: "",
-    //   startWatering: "",
-    //   // notes: form.notes,
-    // };
+import AddPlantForm1 from "./plant-forms/add-plant-form1"
+import AddPlantForm2 from "./plant-forms/add-plant-form2"
+import AddPlantForm3 from "./plant-forms/add-plant-form3"
 
 
-    const AddPlant = () => {
-    // Onsubmithandler passing down the correct fields here?
-    // 3 x form partially prefilled and one ready to fill
 
 
-    // const formSubmit = () => {
-    //   const newPlant = {
-    //     name: formValues.username,
-    //     email: formValues.email,
-    //     waterFrequency: formValues.waterFrequency
-    // }
+
+const AddPlant = () => {
 
  return (
-     <AddPlantForm />
- )
+   <div>
+     <AddPlantForm1 />
+     <AddPlantForm2 />
+     <AddPlantForm3 />
+   </div>
+ );
 
 }
     
