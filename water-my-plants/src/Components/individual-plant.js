@@ -6,11 +6,11 @@ const IndividualPlant = (props) => {
             <Image src = {plant.img} alt = 'Plant'/>
             <div>
                 <h2>{plant.nickname}</h2>
-                <h3>{plant.scientificName}</h3>
+                <h3>{plant.species}</h3>
             </div>
             <div>
                 <h4>Watering Schedule</h4>
-                <h5>{plant.waterFrequency}</h5>
+                <h5>{plant.h2o_frequency}</h5>
                 
                 <h4>Location</h4>
                 <h5>{plant.locating}</h5>

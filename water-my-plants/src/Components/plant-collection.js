@@ -7,27 +7,27 @@ const dummyData = [
     {
         id: 1,
         nickname: 'Tim',
-        scientificName: 'GREEN PLANT',
+        species: 'GREEN PLANT',
         img: 'https://www.gardeningknowhow.com/wp-content/uploads/2012/03/houseplant-sansevieria.jpg',
-        waterFrequency: 'Twice Per Week - Friday, Monday',
+        h2o_frequency: 'Twice Per Week - Friday, Monday',
         locating: 'Bathroom',
         notes: 'This is the best plant ever made in the world'
     },
     {
         id: 2,
         nickname: 'George',
-        scientificName: 'GREEN PLANT',
+        species: 'GREEN PLANT',
         img: 'https://www.gardeningknowhow.com/wp-content/uploads/2012/03/houseplant-sansevieria.jpg',
-        waterFrequency: 'Twice Per Week - Friday, Monday',
+        h2o_frequency: 'Twice Per Week - Friday, Monday',
         locating: 'Bathroom',
         notes: 'This is the best plant ever made in the world'
     },
     {
         id: 3,
         nickname: 'Alex',
-        scientificName: 'GREEN PLANT',
+        species: 'GREEN PLANT',
         img: 'https://www.perkinselearning.org/sites/elearning.perkinsdev1.org/files/plant-164500_960_720.jpg',
-        waterFrequency: 'Twice Per Week - Friday, Monday',
+        h2o_frequency: 'Twice Per Week - Friday, Monday',
         locating: 'Bathroom',
         notes: 'This is the best plant ever made in the world'
     },
