@@ -25,8 +25,8 @@ function SignInForm () {
         axios
         .post('https://ft-water-my-plants-3.herokuapp.com/api/users/login', formValue)
         .then((res) => {
-            console.log(res)
             localStorage.setItem("token", res.data.token)
+            localStorage.setItem("user_id", res.data.user_id)
             history.push('/collection')
         })
         .catch((err) => {
