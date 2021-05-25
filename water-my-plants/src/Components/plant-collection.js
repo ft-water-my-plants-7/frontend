@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import IndividualPlant from './individual-plant';
 import NoPlant from './no-plant';
+import Header from "./header";
+
 const dummyData = [
     {
         id: 1,
@@ -35,6 +37,7 @@ const PlantCollection = () => {
     console.log(plants)
     return(
         <div>
+            <Header />
             {plants.length === 0 ? (<NoPlant /> ) : (
                 <div>
                     <h2>Water my Plants</h2>
