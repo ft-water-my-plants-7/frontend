@@ -9,7 +9,7 @@ function SignInForm () {
 
     // STATES
     const initialFormValue = {
-        email: "",
+        username: "",
         password: ""
     }
 
@@ -22,7 +22,16 @@ function SignInForm () {
 
     const onSubmit = event => {
         event.preventDefault()
-        console.log(formValue)
+        axios
+        .post('https://ft-water-my-plants-3.herokuapp.com/api/users/login', formValue)
+        .then((res) => {
+            console.log(res)
+            localStorage.setItem("token", res.data.token)
+            history.push('/collection')
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     }
 
     // RETURN STATEMENT
@@ -30,8 +39,8 @@ function SignInForm () {
         <div>
             <h2>Login</h2>
             <form onSubmit={onSubmit}>
-               <input type="email" name="email" id="email" onChange={changeHandler}/> Email
-               <input type="password" name="password" id="password" onChange={changeHandler}/> Password
+               <input type="text" name="username" onChange={changeHandler}/> Username
+               <input type="password" name="password" onChange={changeHandler}/> Password
                <button>Log in</button>
             </form>
             <p>Already have an account? <span onClick={() => history.push('/Signup')}>Sign in</span></p>

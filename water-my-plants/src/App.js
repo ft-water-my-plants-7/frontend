@@ -6,6 +6,7 @@ import SignUpForm from "./Components/sign-up";
 import PlantCollection from './Components/plant-collection';
 import EditPlant from './Components/edit-plant';
 import AddPlant from './Components/add-plant';
+import PrivateRoute from './Components/PrivateRoute';
 
 
 function App() {
@@ -13,9 +14,9 @@ function App() {
     <div className="App">
       <Route exact path ='/' component={SignInForm}/>
       <Route path ='/Signup' component={SignUpForm}/>
-      <Route path ='/Collection' component={PlantCollection}/>
-      <Route path ='/Add' component={AddPlant}/>
-      <Route path ='/Edit' component={EditPlant}/>
+      <PrivateRoute path ='/Collection' component={PlantCollection}/>
+      <PrivateRoute path ='/Add' component={AddPlant}/>
+      <PrivateRoute path ='/Edit' component={EditPlant}/>
 
     </div>
   );

@@ -1,4 +1,5 @@
-import React, { useState, useHistory, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import {useHistory} from 'react-router-dom'
 import styled from "styled-components";
 import axios from "axios";
 import * as yup from "yup";
@@ -9,22 +10,23 @@ import SignUpSchema from "../Validation/sign-up-schema"
 const SignUpForm = () => {
   // STATES
   const initialFormValue = {
-    name: "",
-    email: "",
-    phone: "",
+    username: "",
+    // email: "",
+    phone_number: "",
     password: "",
     confirmPassword: "",
   };
 
   const [formValue, setFormValue] = useState(initialFormValue);
   const [errors, setErrors] = useState({
-    name: "",
-    email: "",
-    phone: "",
+    username: "",
+    // email: "",
+    phone_number: "",
     password: "",
     confirmPassword: "",
   });
     const [disabled, setDisabled] = useState(true);
+    const history = useHistory()
 
   //EVENT HANDLERS
      const changeHandler = (event) => {
@@ -36,7 +38,17 @@ const SignUpForm = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log(formValue);
+    console.log(formValue)
+    const data = {username: formValue.username, password: formValue.password, phone_number: formValue.phone_number,}
+    history.push('/')
+    axios
+    .post('https://ft-water-my-plants-3.herokuapp.com/api/users/register', data)
+    .then((res) => {
+      console.log('SIGN UP',res)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   };
 
   const setFormErrors = (name, value) => {
@@ -59,23 +71,22 @@ const SignUpForm = () => {
         {/* unique username */}
         <input
           type="text"
-          name="name"
+          name="username"
           id="name"
           placeholder="Name"
           onChange={changeHandler}
         />
-        <input
+        {/* <input
           type="email"
           name="email"
           id="email"
           placeholder="Email"
           onChange={changeHandler}
-        />
+        /> */}
         {/* valid phone number */}
         <input
-          type="tel"
-          name="phone"
-          id="phone"
+          type="text"
+          name="phone_number"
           placeholder="Phone Number"
           onChange={changeHandler}
         />
@@ -84,14 +95,12 @@ const SignUpForm = () => {
         <input
           type="password"
           name="password"
-          id="password"
           placeholder="Password"
           onChange={changeHandler}
         />
         <input
           type="password"
           name="confirmPassword"
-          id="confirmPassword"
           placeholder="confirmPassword"
           onChange={changeHandler}
         />
