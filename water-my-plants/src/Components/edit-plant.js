@@ -1,28 +1,43 @@
 
-import React, {useState} from 'react'
+import axios from 'axios'
+import React, {useState, useEffect} from 'react'
 
-
-const initialFormValues = {
-    name:'',
-    notes:'',
-    schedule:'',
-}
 
 const EditPlant = () => {
 
     //States
-    const [formValues, setFormValues] = useState(initialFormValues)
+    const [plant, setPlant] = useState({
+      nickname:'',
+      species:'',
+      h2o_frequency:1,
+      image:'',
+    })
 
-    //Event handlers
-    const onChange = evt => {
-        const {name,value} = evt.target
-        setFormValues({...formValues, [name]:value})
-    }
+  //Event handlers
 
-    const onSubmit = evt => {
-        evt.preventDefault()
-        console.log(formValues)
-    }
+  const inputChange = event => {
+    setPlant({
+      ...plant,
+      [event.target.name]: event.target.value
+    })
+    // console.log(plant)
+  }
+
+  const {nickname, species, h2o_frequency, image} = plant
+
+
+  // this is making sure all data is all submitted at once when the form submits
+  const handleSubmit = event => {
+    event.preventDefault()
+    console.log('this is submit',plant)
+    // axios.put(`/api/plants/:plant_id`, {nickname, species, h2o_frequency, image})
+  }
+
+    // useEffect(() => {
+    //   axios.get(`/api/plants/${plant_id}`)
+    //   setPlant(res.data)
+    // },[])
+    
 
     return(
         <div>
@@ -30,25 +45,12 @@ const EditPlant = () => {
             <h4>latin name</h4>
             <p>Watering Schedule</p>
             <form>
-                <label>Nickname
-                <input type='text' name='name' onChange={onChange}/>
-                </label>
-                <label>Start Watering
-                <select type='select' name='schedule' onChange={onChange}>
-                    <option>Sunday</option>
-                    <option>Monday</option>
-                    <option>Tuesday</option>
-                    <option>Wednsday</option>
-                    <option>Thursday</option>
-                    <option>Friday</option>
-                    <option>Saturday</option>
-                </select>
-                </label>
-                <label>Notes
-                <input type='text' name='notes' onChange={onChange}/>
-                </label>
+              Nickname<input name='nickname' id= '' value={nickname} onChange={inputChange}/>
+              Species<input name='species' id= '' value={species} onChange={inputChange}/>
+              How often do you water it?<input name='h2o_frequency' id= '' value={h2o_frequency} type='number' onChange={inputChange}/>
+              Add an Image<input name='image' id= '' value={image} onChange={inputChange}/>
             </form>
-            <button>Save Changes</button>
+            <button onClick={handleSubmit}>Save Changes</button>
             <h4><span>Delete From Collection</span></h4>
         </div>
     )
