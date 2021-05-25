@@ -29,9 +29,23 @@ const EditPlant = () => {
             <h4>latin name</h4>
             <p>Watering Schedule</p>
             <form>
-                <input type='text' name='name' onChange={onChange}/>Nickname
-                <input type='select' name='schedule' onChange={onChange}/>Start Watering
-                <input type='text' name='notes' onChange={onChange}/>Notes
+                <label>Nickname
+                <input type='text' name='name' onChange={onChange}/>
+                </label>
+                <label>Start Watering
+                <select type='select' name='schedule' onChange={onChange}>
+                    <option>Sunday</option>
+                    <option>Monday</option>
+                    <option>Tuesday</option>
+                    <option>Wednsday</option>
+                    <option>Thursday</option>
+                    <option>Friday</option>
+                    <option>Saturday</option>
+                </select>
+                </label>
+                <label>Notes
+                <input type='text' name='notes' onChange={onChange}/>
+                </label>
             </form>
             <button>Save Changes</button>
             <h4><span>Delete From Collection</span></h4>
