@@ -1,20 +1,29 @@
-import React, { useState } from "react"
-import styled from "styled-components";
+import React, { useState, useEffect } from "react"
+// import styled from "styled-components";
 import { useHistory, useParams } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 
 
 function EditUserProfile() {
-    
-const [user, setUser] = useState({
-  user_id: "",
-  username: "",
-  phone_number: ""
-});
+
+const user_id = localStorage.getItem("user_id");
+const [user, setUser] = useState({});
+
+useEffect(() => {
+    axiosWithAuth()
+      .get(`/api/users/${user_id}`)
+      .then((res) => {
+          setUser(res.data)
+          console.log("useEffect import of data", res.data)
+      })
+      .catch((err) => {
+        console.log("This is an error in the useEffect", err);
+      });
+}, [])
 
 const history = useHistory();
-const { user_id } = useParams();
+// const { user_id } = useParams();
 
 const onChange = event => {
     setUser({
@@ -26,11 +35,11 @@ const onChange = event => {
 
 const handleSubmit = event => {
     event.preventDefault()
-    const { username, phone_number } = user;
+    const { password, phone_number } = user;
     axiosWithAuth()
-    .put(`/api/plants/${user_id}`, { username, phone_number })
+    .put(`/api/users/${user_id}`, { phone_number })
     .then((res) => {
-        console.log(res)
+        console.log("handle submit console", res)
         history.push("/user")
     })
     .catch((err) => {
@@ -41,18 +50,16 @@ const handleSubmit = event => {
     console.log("this is submit", user);
 }
 
-const {  username, phone_number } = user;
+const { password, phone_number } = user;
 
     return (
       <div>
         <h1>Hello edit user page </h1>
         <form>
-          Username
           <input
             type="text"
-            // GET RID OF user dot here once handleSubmit is complete
-            value={username}
-            name="username"
+            value={password}
+            name="password"
             onChange={onChange}
           />
           Phone Number
