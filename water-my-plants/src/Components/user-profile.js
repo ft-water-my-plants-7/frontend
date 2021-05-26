@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 
 const Profile = () => {
 
+const history =  useHistory();
     const [user, setUser] =useState([])
     const user_id = localStorage.getItem('user_id')
     useEffect(() => {
@@ -20,7 +21,7 @@ const Profile = () => {
         <h2> Username</h2>
         <p>{user.username}</p>
         <p>{user.phone_number}</p>
-        <button onClick={() => useHistory.push("/editProfile")}>Edit profile</button>
+        <button onClick={() => history.push(`/editProfile/${user_id}`)}>Edit profile</button>
       </div>
     );
 }
