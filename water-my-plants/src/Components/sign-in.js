@@ -3,6 +3,42 @@ import styled from "styled-components";
 import axios from "axios";
 import {useHistory} from 'react-router-dom'
 
+const PageContainer = styled.div`
+  display: flex;
+  background-color: ${(props) => props.theme.primaryColor};
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+const ContentContainer = styled.div`
+  display: flex;
+  background-color: black;
+  height: 40%;
+  width: 40%;
+  justify-content: center;
+  align-items: center;
+`;
+
+const InnerContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: ${(props) => props.theme.white};
+  height: 80%;
+  width: 80%;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  font-family: ${(props) => props.theme.secondaryFont};
+  
+
+  form {
+      display: flex;
+      flex-direction: column;
+  }
+`;
+
+
+
 
 function SignInForm () {
     const history = useHistory()
@@ -36,16 +72,39 @@ function SignInForm () {
 
     // RETURN STATEMENT
     return (
-        <div>
-            <h2>Login</h2>
+      <PageContainer>
+        <ContentContainer>
+          <InnerContentContainer>
+            <h1>Login</h1>
             <form onSubmit={onSubmit}>
-               <input type="text" name="username" onChange={changeHandler}/> Username
-               <input type="password" name="password" onChange={changeHandler}/> Password
-               <button>Log in</button>
+              <label>
+                <input
+                  type="text"
+                  name="username"
+                  onChange={changeHandler}
+                  placeholder="Please enter your username here"
+                />
+              </label>
+              <label>
+                <input
+                  type="password"
+                  name="password"
+                  onChange={changeHandler}
+                  placeholder="Please enter your password here"
+                />
+              </label>
+
+              <br></br>
+              <button>Log in</button>
             </form>
-            <p>Already have an account? <span onClick={() => history.push('/Signup')}>Sign in</span></p>
-        </div>
-    )
+            <p>
+              Already have an account?{" "}
+              <span onClick={() => history.push("/Signup")}>Sign in</span>
+            </p>
+          </InnerContentContainer>
+        </ContentContainer>
+      </PageContainer>
+    );
 }
 
 export default SignInForm

@@ -9,4 +9,5 @@ export default {
   white: "white",
   breakpointMobile: "(max-width: 550px)",
   font: "Amatic SC",
+  secondaryFont: "PT Serif",
 };
