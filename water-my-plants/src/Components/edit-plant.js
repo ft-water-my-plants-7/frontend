@@ -1,15 +1,11 @@
 
 import {axiosWithAuth} from '../utils/axiosWithAuth'
 import React, {useState, useEffect} from 'react'
-import {useParams} from 'react-router-dom'
-
+import {useParams, useHistory} from 'react-router-dom'
 
 const EditPlant = () => {
   const {plant_id} = useParams();
-
-    // const url = window.location.pathname;
-    // const id = url.substring(url.lastIndexOf('/') + 1);
-    // const realId = parseInt(id);
+  const history = useHistory()
   
   //States
   const [plant, setPlant] = useState({
@@ -27,14 +23,6 @@ const EditPlant = () => {
     })
   }
   
-  
-  // this is making sure all data is all submitted at once when the form submits
-  const handleSubmit = event => {
-    event.preventDefault()
-    const {nickname, species, h2o_frequency, image} = plant
-    console.log('this is submit',plant)
-    // axios.put(`/api/plants/:plant_id`, {nickname, species, h2o_frequency, image})
-  }
   useEffect(() => {
     axiosWithAuth()
     .get(`/api/plants/${plant_id}`)
@@ -46,8 +34,25 @@ const EditPlant = () => {
       }
       setPlant(res.data)
     })
-    .catch()
+    .catch((err) =>{
+      console.log(err)
+    })
   }, [])
+
+  // this is making sure all data is all submitted at once when the form submits
+  const handleSubmit = event => {
+    event.preventDefault()
+    const {nickname, species, h2o_frequency, image} = plant
+    console.log('this is submit',plant)
+    axiosWithAuth()
+    .put(`/api/plants/${plant_id}`, {nickname, species, h2o_frequency, image})
+    .then((res) => {
+      history.push("/collection")
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
   
   const {nickname, species, h2o_frequency, image} = plant
     return(
