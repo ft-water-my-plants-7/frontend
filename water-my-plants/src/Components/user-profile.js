@@ -4,7 +4,8 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 
 const Profile = () => {
-
+    const history = useHistory();
+    //Invoke usehistory.
     const [user, setUser] =useState([])
     const user_id = localStorage.getItem('user_id')
     useEffect(() => {
@@ -20,7 +21,10 @@ const Profile = () => {
         <h2> Username</h2>
         <p>{user.username}</p>
         <p>{user.phone_number}</p>
-        <button onClick={() => useHistory.push("/editProfile")}>Edit profile</button>
+        {/* <button onClick={() => history.push("/EditProfile"/)}> */}
+        <button onClick={() => history.push(`/EditUser/${user.user_id}`)}>
+          Edit my profile
+        </button>
       </div>
     );
 }

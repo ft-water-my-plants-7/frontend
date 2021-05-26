@@ -8,6 +8,7 @@ import EditPlant from './Components/edit-plant';
 import AddPlant from './Components/add-plant';
 import PrivateRoute from './Components/PrivateRoute';
 import Profile from "./Components/user-profile";
+import EditProfile from "./Components/edit-user-profile";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <PrivateRoute path="/Add" component={AddPlant} />
       <PrivateRoute path="/Edit/:plant_id" component={EditPlant} />
       <PrivateRoute path="/user" component={Profile} />
+      <PrivateRoute path="/EditUser/:user_id" component={EditProfile} />
     </div>
   );
 }
