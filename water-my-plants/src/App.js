@@ -21,7 +21,7 @@ function App() {
       <PrivateRoute path="/Add" component={AddPlant} />
       <PrivateRoute path="/Edit/:plant_id" component={EditPlant} />
       <PrivateRoute path="/user" component={Profile} />
-      <PrivateRoute path="/EditProfile" component={EditUserProfile} />
+      <PrivateRoute path="/editProfile" component={EditUserProfile} />
     </div>
   );
 }

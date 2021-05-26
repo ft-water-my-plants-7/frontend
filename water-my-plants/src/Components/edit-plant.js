@@ -43,6 +43,7 @@ const EditPlant = () => {
   const handleSubmit = event => {
     event.preventDefault()
     const {nickname, species, h2o_frequency, image} = plant
+    //destructured plant object
     console.log('this is submit',plant)
     axiosWithAuth()
     .put(`/api/plants/${plant_id}`, {nickname, species, h2o_frequency, image})
