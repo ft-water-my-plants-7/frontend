@@ -20,6 +20,7 @@ const PlantCollection = () => {
             console.log(err)
         })
     }, [])
+    console.log(plants)
     
     return(
         <div>
@@ -32,7 +33,7 @@ const PlantCollection = () => {
                         {plants.map((plant) => {
                             console.log('THISD PLANT',plant.plant_id)
                             return (
-                            <IndividualPlant key={plant.plant_id} setPlants={setPlants} plant={plant}/>
+                            <IndividualPlant key={plant.plant_id} setPlants={setPlants} plant={plant} plants={plants}/>
                         )})}
                     </div>
                 </div>
