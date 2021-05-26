@@ -7,18 +7,19 @@ import PlantCollection from './Components/plant-collection';
 import EditPlant from './Components/edit-plant';
 import AddPlant from './Components/add-plant';
 import PrivateRoute from './Components/PrivateRoute';
+import Profile from "./Components/user-profile";
 
 
 function App() {
 
   return (
     <div className="App">
-      <Route exact path ='/' component={SignInForm}/>
-      <Route path ='/Signup' component={SignUpForm}/>
-      <PrivateRoute path ='/Collection' component={PlantCollection}/>
-      <PrivateRoute path ='/Add' component={AddPlant}/>
-      <PrivateRoute path ="/Edit/:plant_id" component={EditPlant}/>
-
+      <Route exact path="/" component={SignInForm} />
+      <Route path="/Signup" component={SignUpForm} />
+      <PrivateRoute path="/Collection" component={PlantCollection} />
+      <PrivateRoute path="/Add" component={AddPlant} />
+      <PrivateRoute path="/Edit/:plant_id" component={EditPlant} />
+      <PrivateRoute path="/user" component={Profile} />
     </div>
   );
 }
