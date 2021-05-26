@@ -30,7 +30,9 @@ const submit = (event) => {
         console.log(res);
         history.push('/collection')
       })
-      .catch((res) => {});
+      .catch((err) => {
+        console.log(err)
+      });
   };
 
    const change = (event) => {

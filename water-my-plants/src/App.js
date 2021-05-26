@@ -10,13 +10,14 @@ import PrivateRoute from './Components/PrivateRoute';
 
 
 function App() {
+
   return (
     <div className="App">
       <Route exact path ='/' component={SignInForm}/>
       <Route path ='/Signup' component={SignUpForm}/>
       <PrivateRoute path ='/Collection' component={PlantCollection}/>
       <PrivateRoute path ='/Add' component={AddPlant}/>
-      <PrivateRoute path ='/Edit' component={EditPlant}/>
+      <PrivateRoute path ="/Edit/:plant_id" component={EditPlant}/>
 
     </div>
   );
