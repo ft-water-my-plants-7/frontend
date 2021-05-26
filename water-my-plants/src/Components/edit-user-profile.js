@@ -35,17 +35,17 @@ const onChange = event => {
 
 const handleSubmit = event => {
     event.preventDefault()
-    const { password, phone_number } = user;
+    const { password, phone_number, username } = user;
     axiosWithAuth()
-    .put(`/api/users/${user_id}`, { phone_number })
-    .then((res) => {
-        console.log("handle submit console", res)
-        history.push("/user")
-    })
-    .catch((err) => {
-        debugger
-        console.log("this is the error", err)
-    })
+      .put(`/api/users/${user_id}`, { password, phone_number, username  })
+      .then((res) => {
+        console.log("handle submit console", res);
+        history.push("/user");
+      })
+      .catch((err) => {
+        // debugger;
+        console.log("this is the error", err);
+      });
     // This is in place so that the form knows what we're talking about.
     console.log("this is submit", user);
 }
@@ -57,7 +57,7 @@ const { password, phone_number } = user;
         <h1>Hello edit user page </h1>
         <form>
           <input
-            type="text"
+            type="password"
             value={password}
             name="password"
             onChange={onChange}
