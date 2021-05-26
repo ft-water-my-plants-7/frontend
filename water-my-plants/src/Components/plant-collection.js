@@ -8,13 +8,11 @@ import {useHistory} from 'react-router-dom'
 const PlantCollection = () => {
     const [plants, setPlants] = useState([])
     const history = useHistory()
-    console.log(plants)
     const user_id = localStorage.getItem('user_id')
     useEffect(() => {
         axiosWithAuth()
         .get(`/api/users/${user_id}/plants`)
         .then((res) => {
-            console.log(res)
             setPlants(res.data)
 
         })
@@ -22,6 +20,7 @@ const PlantCollection = () => {
             console.log(err)
         })
     }, [])
+    
     return(
         <div>
             <Header />
@@ -30,9 +29,11 @@ const PlantCollection = () => {
                     <h2>Water my Plants</h2>
                     <div>
                     <button onClick={() => history.push('/add')}>Add Plant</button>
-                        {plants.map((plant) => (
-                            <IndividualPlant key={plant.id} setPlants={setPlants} plant={plant}/>
-                        ))}
+                        {plants.map((plant) => {
+                            console.log('THISD PLANT',plant.plant_id)
+                            return (
+                            <IndividualPlant key={plant.plant_id} setPlants={setPlants} plant={plant}/>
+                        )})}
                     </div>
                 </div>
                 

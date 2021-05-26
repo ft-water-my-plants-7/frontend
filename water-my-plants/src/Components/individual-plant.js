@@ -1,6 +1,8 @@
 import styled from 'styled-components'
+import {useHistory} from 'react-router-dom'
 const IndividualPlant = (props) => {
     const {plant} = props
+    const history = useHistory()
     return(
         <div>
             <Image src = {plant.img} alt = 'Plant'/>
@@ -12,11 +14,7 @@ const IndividualPlant = (props) => {
                 <h4>Watering Schedule</h4>
                 <h5>{plant.h2o_frequency}</h5>
                 
-                <h4>Location</h4>
-                <h5>{plant.locating}</h5>
-                
-                <h4>Notes</h4>
-                <h5>{plant.notes}</h5>
+                <button onClick={() => history.push(`/Edit/${plant.plant_id}`)}>Edit</button>
             </div>
         </div>
     )
