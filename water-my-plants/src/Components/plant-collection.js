@@ -4,6 +4,7 @@ import NoPlant from './no-plant';
 import Header from "./header";
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import {useHistory} from 'react-router-dom'
+import styled from 'styled-components';
 
 const PlantCollection = () => {
     const [plants, setPlants] = useState([])
@@ -28,14 +29,14 @@ const PlantCollection = () => {
             {plants.length === 0 ? (<NoPlant /> ) : (
                 <div>
                     <h2>Water my Plants</h2>
-                    <div>
                     <button onClick={() => history.push('/add')}>Add Plant</button>
+                    <Container>
                         {plants.map((plant) => {
                             console.log('THISD PLANT',plant.plant_id)
                             return (
                             <IndividualPlant key={plant.plant_id} setPlants={setPlants} plant={plant} plants={plants}/>
                         )})}
-                    </div>
+                    </Container>
                 </div>
                 
             )}
@@ -44,3 +45,9 @@ const PlantCollection = () => {
     )
 }
 export default PlantCollection
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: row;
+    
+`

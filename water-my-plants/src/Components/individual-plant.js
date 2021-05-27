@@ -23,20 +23,20 @@ const IndividualPlant = (props) => {
     }
 
     return(
-        <div>
-            <Image src = {plant.img} alt = 'Plant'/>
+        <Container>
+            <Image src = {plant.image} alt = 'Plant'/>
             <div>
-                <h2>{plant.nickname}</h2>
-                <h3>{plant.species}</h3>
+                <h2>Nickname: {plant.nickname}</h2>
+                <h3>Species: {plant.species}</h3>
             </div>
             <div>
                 <h4>Watering Schedule</h4>
-                <h5>{plant.h2o_frequency}</h5>
+                <h5>Water {plant.h2o_frequency} times a week</h5>
                 
                 <button onClick={() => history.push(`/Edit/${plant.plant_id}`)}>Edit</button>
                 <button onClick={deleteHandler}>Delete</button>
             </div>
-        </div>
+        </Container>
     )
 }
 
@@ -45,4 +45,11 @@ export default IndividualPlant
 const Image = styled.img`
     width: 250px;
     height: 250px;
+`
+
+const Container = styled.div`
+    padding: 50px;
+    border: 1px solid grey;
+    margin: 50px;
+    
 `
