@@ -15,6 +15,8 @@ const history =  useHistory();
             setUser(res.data)
         })
     }, [])
+
+    
     return (
       <div>
         <Header />

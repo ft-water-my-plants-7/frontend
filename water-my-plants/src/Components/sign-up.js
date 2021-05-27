@@ -11,7 +11,6 @@ const SignUpForm = () => {
   // STATES
   const initialFormValue = {
     username: "",
-    // email: "",
     phone_number: "",
     password: "",
     confirmPassword: "",
@@ -20,7 +19,6 @@ const SignUpForm = () => {
   const [formValue, setFormValue] = useState(initialFormValue);
   const [errors, setErrors] = useState({
     username: "",
-    // email: "",
     phone_number: "",
     password: "",
     confirmPassword: "",
@@ -67,8 +65,8 @@ const SignUpForm = () => {
   return (
     <div>
       <h1>SIGN UP</h1>
+
       <form onSubmit={onSubmit}>
-        {/* unique username */}
         <input
           type="text"
           name="username"
@@ -76,38 +74,32 @@ const SignUpForm = () => {
           placeholder="Name"
           onChange={changeHandler}
         />
-        {/* <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Email"
-          onChange={changeHandler}
-        /> */}
-        {/* valid phone number */}
+        <p>{errors.phone_number}</p>
         <input
-          type="text"
+          type="tel"
           name="phone_number"
           placeholder="Phone Number"
           onChange={changeHandler}
         />
-        <span>{errors.phone}</span>
-        {/* password required */}
+        <span></span>
         <input
           type="password"
           name="password"
           placeholder="Password"
           onChange={changeHandler}
         />
+        <p>{errors.confirmPassword}</p>
         <input
           type="password"
           name="confirmPassword"
           placeholder="confirmPassword"
           onChange={changeHandler}
         />
-        <button
-        disabled={disabled}>Sign Up</button>
+        <button disabled={disabled}>Sign Up</button>
       </form>
-      <p>Already have an account?<span>Sign in.</span></p>
+      <p>
+        Already have an account?<span>Sign in.</span>
+      </p>
     </div>
   );
 }

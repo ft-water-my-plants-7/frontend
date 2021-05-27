@@ -37,7 +37,7 @@ const handleSubmit = event => {
     event.preventDefault()
     const { password, phone_number, username } = user;
     axiosWithAuth()
-      .put(`/api/users/${user_id}`, { password, phone_number, username  })
+      .put(`/api/users/${user_id}`, { password, phone_number, username })
       .then((res) => {
         console.log("handle submit console", res);
         history.push("/user");
