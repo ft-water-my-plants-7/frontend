@@ -3,19 +3,6 @@ import styled from "styled-components";
 import axios from "axios";
 import {useHistory} from 'react-router-dom'
 
-// export default {
-//   headerColor: "#224229",
-//   primaryColor: "#E5E5E5",
-//   secondaryFontColor: "#224229",
-//   black: "black",
-//   white: "white",
-//   green: "#548A60",
-//   highlight: "#B1B7B3",
-//   font: "Amatic SC",
-//   secondaryFont: "PT Serif",
-//   thirdFont: "Raleway",
-// };
-
 
 const PageContainer = styled.div`
   display: flex;
@@ -27,7 +14,7 @@ const PageContainer = styled.div`
 
 const ContentContainer = styled.div`
   display: flex;
-  height: 30%;
+  height: 50%;
   background-color: white;
   width: 40%;
   justify-content: center;
