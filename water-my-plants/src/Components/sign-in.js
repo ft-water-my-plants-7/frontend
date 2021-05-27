@@ -3,6 +3,20 @@ import styled from "styled-components";
 import axios from "axios";
 import {useHistory} from 'react-router-dom'
 
+// export default {
+//   headerColor: "#224229",
+//   primaryColor: "#E5E5E5",
+//   secondaryFontColor: "#224229",
+//   black: "black",
+//   white: "white",
+//   green: "#548A60",
+//   highlight: "#B1B7B3",
+//   font: "Amatic SC",
+//   secondaryFont: "PT Serif",
+//   thirdFont: "Raleway",
+// };
+
+
 const PageContainer = styled.div`
   display: flex;
   background-color: ${(props) => props.theme.primaryColor};
@@ -13,8 +27,8 @@ const PageContainer = styled.div`
 
 const ContentContainer = styled.div`
   display: flex;
-  background-color: black;
   height: 30%;
+  background-color: white;
   width: 40%;
   justify-content: center;
   align-items: center;
@@ -25,7 +39,7 @@ const InnerContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${(props) => props.theme.white};
-  height: 80%;
+  height: 100%;
   width: 80%;
   justify-content: space-evenly;
   align-items: flex-start;
@@ -34,21 +48,26 @@ const InnerContentContainer = styled.div`
   h1 {
     font-family: ${(props) => props.theme.secondaryFont};
     color: ${(props) => props.theme.tertiaryColor};
+    background-color: "yellow";
   }
 
   form {
     display: flex;
     flex-direction: column;
     width: 98%;
-    justify-content: space-evenly;
   }
 
   input {
     border: none;
     width: 100%;
-    height: 150%;
-    color: red;
-    margin-bottom: 5%;
+    height: 100%;
+    padding-bottom: 4%;
+    margin-bottom: 2%;
+    box-sizing: border-box;
+    border-bottom: 2px solid ${(props) => props.theme.green};
+    font-family: ${(props) => props.theme.secondaryFont};
+    color: ${(props) => props.theme.green};
+    font-size: 2rem;
   }
 
   input::-webkit-input-placeholder {
@@ -61,16 +80,31 @@ const InnerContentContainer = styled.div`
 const SectionThreeForm = styled.div`
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
-  justify-content: center;
+  align-items: center;
   padding-top: 10%;
 
-
   button {
-    width: 50%;
-    height: 50%;
+    width: 30%;
+    height: 120%;
+    background-color: ${(props) => props.theme.green};
+    color: white;
   }
-`
+
+  p {
+    width: 70%;
+    height: 50%;
+    color: ${(props) => props.theme.highlight};
+  }
+
+  p span {
+    font-weight: 800;
+    color: ${(props) => props.theme.black};
+  }
+
+  p span:hover {
+    cursor: pointer;
+  }
+`;
 
 
 
@@ -129,10 +163,10 @@ function SignInForm () {
                 />
               </label>
               <SectionThreeForm>
-                <button>Log in</button>
+                <button>LOG IN</button>
                 <p>
-                  Already have an account?
-                  <span onClick={() => history.push("/Signup")}>Sign in</span>
+                  Have an account? 
+                  <span onClick={() => history.push("/Signup")}> Sign in.</span>
                 </p>
               </SectionThreeForm>
             </form>
