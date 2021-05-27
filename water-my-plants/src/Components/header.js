@@ -66,6 +66,9 @@ const Header = () => {
         <h2>WELCOME, KAREN!</h2>
       </LeftSideNav>
       <RightSideNav>
+        <button onClick={() => history.push("/collection")}>
+          <h2>MY COLLECTION</h2>
+        </button>
         <button onClick={() => history.push("/user")}>
           <h2>MY PROFILE</h2>
         </button>
