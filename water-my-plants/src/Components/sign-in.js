@@ -3,6 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import {useHistory} from 'react-router-dom'
 
+
 const PageContainer = styled.div`
   display: flex;
   background-color: ${(props) => props.theme.primaryColor};
@@ -13,27 +14,82 @@ const PageContainer = styled.div`
 
 const ContentContainer = styled.div`
   display: flex;
-  background-color: black;
-  height: 40%;
+  height: 50%;
+  background-color: white;
   width: 40%;
   justify-content: center;
   align-items: center;
 `;
 
+
 const InnerContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${(props) => props.theme.white};
-  height: 80%;
+  height: 100%;
   width: 80%;
   justify-content: space-evenly;
   align-items: flex-start;
   font-family: ${(props) => props.theme.secondaryFont};
-  
+
+  h1 {
+    font-family: ${(props) => props.theme.secondaryFont};
+    color: ${(props) => props.theme.tertiaryColor};
+    background-color: "yellow";
+  }
 
   form {
-      display: flex;
-      flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    width: 98%;
+  }
+
+  input {
+    border: none;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 4%;
+    margin-bottom: 2%;
+    box-sizing: border-box;
+    border-bottom: 2px solid ${(props) => props.theme.green};
+    font-family: ${(props) => props.theme.secondaryFont};
+    color: ${(props) => props.theme.green};
+    font-size: 2rem;
+  }
+
+  input::-webkit-input-placeholder {
+    color: green;
+    font-family: ${(props) => props.theme.secondaryFont};
+    font-size: 1.5rem;
+  }
+`;
+
+const SectionThreeForm = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10%;
+
+  button {
+    width: 30%;
+    height: 120%;
+    background-color: ${(props) => props.theme.green};
+    color: white;
+  }
+
+  p {
+    width: 70%;
+    height: 50%;
+    color: ${(props) => props.theme.highlight};
+  }
+
+  p span {
+    font-weight: 800;
+    color: ${(props) => props.theme.black};
+  }
+
+  p span:hover {
+    cursor: pointer;
   }
 `;
 
@@ -82,7 +138,7 @@ function SignInForm () {
                   type="text"
                   name="username"
                   onChange={changeHandler}
-                  placeholder="Please enter your username here"
+                  placeholder="Username"
                 />
               </label>
               <label>
@@ -90,17 +146,17 @@ function SignInForm () {
                   type="password"
                   name="password"
                   onChange={changeHandler}
-                  placeholder="Please enter your password here"
+                  placeholder="Password"
                 />
               </label>
-
-              <br></br>
-              <button>Log in</button>
+              <SectionThreeForm>
+                <button>LOG IN</button>
+                <p>
+                  Have an account? 
+                  <span onClick={() => history.push("/Signup")}> Sign in.</span>
+                </p>
+              </SectionThreeForm>
             </form>
-            <p>
-              Already have an account?{" "}
-              <span onClick={() => history.push("/Signup")}>Sign in</span>
-            </p>
           </InnerContentContainer>
         </ContentContainer>
       </PageContainer>
