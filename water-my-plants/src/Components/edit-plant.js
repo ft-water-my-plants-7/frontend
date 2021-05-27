@@ -2,6 +2,7 @@
 import {axiosWithAuth} from '../utils/axiosWithAuth'
 import React, {useState, useEffect} from 'react'
 import {useParams, useHistory} from 'react-router-dom'
+import styled from 'styled-components'
 
 const EditPlant = () => {
   const {plant_id} = useParams();
@@ -58,19 +59,42 @@ const EditPlant = () => {
   const {nickname, species, h2o_frequency, image} = plant
     return(
         <div>
-            <h2>Nickname: {nickname}</h2>
-            <h4>Species: {species}</h4>
-            <h4>Watering Schedule: {h2o_frequency}</h4>
+          <Container>
+              <Image src = {plant.image} alt = 'Plant'/>
+              <h2>Nickname: {nickname}</h2>
+              <h4>Species: {species}</h4>
+              <h4>Watering {h2o_frequency} times a week</h4>
+          </Container>
 
-            <form>
+            <Form>
               Nickname<input name='nickname' id= '' value={nickname} onChange={inputChange}/>
               Species<input name='species' id= '' value={species} onChange={inputChange}/>
               How often do you water it a week?<input name='h2o_frequency' id= '' value={h2o_frequency} type='number' onChange={inputChange}/>
               Add an Image<input name='image' id= '' value={image} onChange={inputChange}/>
-            </form>
+            </Form>
             <button onClick={handleSubmit}>Save Changes</button>
-            <h4><span>Delete From Collection</span></h4>
         </div>
     )
 }
 export default EditPlant
+
+const Image = styled.img`
+    width: 250px;
+    height: 250px;
+`
+const Container = styled.div`
+    padding: 50px;
+    margin: 50px;
+    
+`
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  margin-left: 20%;
+  margin-right: 20%;
+  align-items: center;
+  margin-top: -70px;
+  padding-bottom: 50px;
+
+`

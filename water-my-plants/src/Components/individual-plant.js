@@ -32,10 +32,10 @@ const IndividualPlant = (props) => {
             <div>
                 <h4>Watering Schedule</h4>
                 <h5>Water {plant.h2o_frequency} times a week</h5>
+            </div>
                 
                 <button onClick={() => history.push(`/Edit/${plant.plant_id}`)}>Edit</button>
                 <button onClick={deleteHandler}>Delete</button>
-            </div>
         </Container>
     )
 }
