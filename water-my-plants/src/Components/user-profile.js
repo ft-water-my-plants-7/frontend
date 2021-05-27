@@ -15,7 +15,7 @@ const history =  useHistory();
             console.log(res);
             setUser(res.data)
         })
-    }, [])
+    }, [user_id])
 
     
     return (

@@ -1,6 +1,5 @@
-import styled from "styled-components";
 
-export default {
+const theme =  {
   headerColor: "#224229",
   primaryColor: "#E5E5E5",
   secondaryFontColor: "#224229",
@@ -12,3 +11,5 @@ export default {
   secondaryFont: "PT Serif",
   thirdFont: "Raleway",
 };
+
+export default theme

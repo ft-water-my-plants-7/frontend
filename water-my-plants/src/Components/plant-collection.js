@@ -20,7 +20,7 @@ const PlantCollection = () => {
         .catch((err) => {
             console.log(err)
         })
-    }, [])
+    }, [user_id])
     console.log(plants)
     
     return(
