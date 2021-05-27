@@ -38,7 +38,7 @@ const EditPlant = () => {
     .catch((err) =>{
       console.log(err)
     })
-  }, [])
+  }, [plant_id])
 
   // this is making sure all data is all submitted at once when the form submits
   const handleSubmit = event => {

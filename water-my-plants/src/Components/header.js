@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {useHistory} from 'react-router-dom'
 import styled from "styled-components";
+import {axiosWithAuth} from '../utils/axiosWithAuth'
 
 const StyledNav = styled.nav`
   width: 100%;
@@ -57,13 +58,22 @@ const Header = () => {
     localStorage.removeItem('token');
     history.push("/");
   }
+  const [user, setUser] =useState([])
+    const user_id = localStorage.getItem('user_id')
+    useEffect(() => {
+        axiosWithAuth().get(`/api/users/${user_id}`)
+        .then((res) => {
+            console.log(res);
+            setUser(res.data)
+        })
+    }, [user_id])
 
   
   return (
     <StyledNav>
       <LeftSideNav>
         <span>WMP 💦</span>
-        <h2>WELCOME, KAREN!</h2>
+        <h2>WELCOME, {user.username}!</h2>
       </LeftSideNav>
       <RightSideNav>
         <button onClick={() => history.push("/collection")}>

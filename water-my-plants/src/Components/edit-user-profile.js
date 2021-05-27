@@ -17,7 +17,7 @@ useEffect(() => {
       .catch((err) => {
         console.log("This is an error in the useEffect", err);
       });
-}, [])
+}, [user_id])
 
 const history = useHistory();
 
