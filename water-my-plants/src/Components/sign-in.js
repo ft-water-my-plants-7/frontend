@@ -14,11 +14,12 @@ const PageContainer = styled.div`
 const ContentContainer = styled.div`
   display: flex;
   background-color: black;
-  height: 40%;
+  height: 30%;
   width: 40%;
   justify-content: center;
   align-items: center;
 `;
+
 
 const InnerContentContainer = styled.div`
   display: flex;
@@ -29,13 +30,47 @@ const InnerContentContainer = styled.div`
   justify-content: space-evenly;
   align-items: flex-start;
   font-family: ${(props) => props.theme.secondaryFont};
-  
+
+  h1 {
+    font-family: ${(props) => props.theme.secondaryFont};
+    color: ${(props) => props.theme.tertiaryColor};
+  }
 
   form {
-      display: flex;
-      flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    width: 98%;
+    justify-content: space-evenly;
+  }
+
+  input {
+    border: none;
+    width: 100%;
+    height: 150%;
+    color: red;
+    margin-bottom: 5%;
+  }
+
+  input::-webkit-input-placeholder {
+    color: green;
+    font-family: ${(props) => props.theme.secondaryFont};
+    font-size: 1.5rem;
   }
 `;
+
+const SectionThreeForm = styled.div`
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  justify-content: center;
+  padding-top: 10%;
+
+
+  button {
+    width: 50%;
+    height: 50%;
+  }
+`
 
 
 
@@ -82,7 +117,7 @@ function SignInForm () {
                   type="text"
                   name="username"
                   onChange={changeHandler}
-                  placeholder="Please enter your username here"
+                  placeholder="Username"
                 />
               </label>
               <label>
@@ -90,17 +125,17 @@ function SignInForm () {
                   type="password"
                   name="password"
                   onChange={changeHandler}
-                  placeholder="Please enter your password here"
+                  placeholder="Password"
                 />
               </label>
-
-              <br></br>
-              <button>Log in</button>
+              <SectionThreeForm>
+                <button>Log in</button>
+                <p>
+                  Already have an account?
+                  <span onClick={() => history.push("/Signup")}>Sign in</span>
+                </p>
+              </SectionThreeForm>
             </form>
-            <p>
-              Already have an account?{" "}
-              <span onClick={() => history.push("/Signup")}>Sign in</span>
-            </p>
           </InnerContentContainer>
         </ContentContainer>
       </PageContainer>
