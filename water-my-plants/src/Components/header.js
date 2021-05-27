@@ -53,6 +53,11 @@ const RightSideNav = styled.div`
 const Header = () => {
   const history = useHistory();
 
+  const logout = () => {
+    localStorage.removeItem('token');
+    history.push("/");
+  }
+
   
   return (
     <StyledNav>
@@ -65,7 +70,7 @@ const Header = () => {
           <h2>MY PROFILE</h2>
         </button>
         <button onClick={() => history.push("/collection")}>
-          <h2>SIGN OUT</h2>
+          <h2 onClick={logout}>SIGN OUT</h2>
         </button>
       </RightSideNav>
     </StyledNav>
